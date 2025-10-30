@@ -8,7 +8,7 @@ const StoreContextProvider = (props) => {
   const [token, setToken] = useState("");
   const [food_list, setFoodList] = useState([]);
 
-  const url = import.meta.env.VITE_BACKEND_URL || "http://localhost:4000";
+  const url = import.meta.env.VITE_BACKEND_URL || "https://foodify-mern-backend.onrender.com";
 
   useEffect(() => {
     const savedToken = localStorage.getItem("token");
