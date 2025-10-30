@@ -1,0 +1,51 @@
+.list-table-format{
+    display: grid;
+    grid-template-columns: 0.5fr 2fr 1fr 1fr 0.5fr;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 15px;
+    border: 1px solid #cacaca;
+    font-size: 13px;
+}
+.list-table-format.title{
+    background-color: #f9f9f9;
+}
+.list-table-format img{
+    width: 50px;
+}
+
+@media (max-width:600px) {
+    .list-table-format{
+        grid-template-columns: 1fr 3fr 1fr;
+        gap: 15px;
+    }
+    .list-table-format.title{
+        display: none;
+    }
+}
+
+
+/* ===== Responsive helpers appended by ChatGPT (per-file) - conservative, non-invasive ===== */
+@media (max-width: 1024px) {
+  img, video, canvas { max-width: 100% !important; height: auto !important; display: block !important; }
+  input, textarea, select, button { max-width: 100% !important; box-sizing: border-box !important; }
+  .container, .page, .main, .content, .app, .wrapper, .page-inner, .place-order-inner { width: 100% !important; max-width: 100% !important; padding-left: 12px !important; padding-right: 12px !important; box-sizing: border-box !important; }
+  .flex, .d-flex, .header-contents, .summary-items, .summary-item, .multi-fields, .fields, .order-form, .order-summary, .cart-items, .menu-list, .menu-grid { flex-wrap: wrap !important; }
+  .flex.col-on-mobile, .stack-mobile { flex-direction: column !important; }
+  .card, .panel, .summary-item, .menu-item, .product-card, .order-card { width: 100% !important; max-width: 100% !important; }
+}
+@media (max-width: 768px) {
+  h1, h2, h3, h4 { line-height: 1.15 !important; margin-top: .35em !important; margin-bottom: .35em !important; }
+  .nav, .navbar, .header, .topbar { padding-left: 10px !important; padding-right: 10px !important; }
+  .multi-fields input, .multi-fields select, .multi-fields textarea, .fields input, .fields select, .fields textarea { width: 100% !important; margin-bottom: 8px !important; }
+  .sidebar, .order-summary { width: 100% !important; max-width: 100% !important; order: 2 !important; }
+  .main-content, .content-area { order: 1 !important; width: 100% !important; }
+  .p-large, .m-large { padding: 12px !important; margin: 8px !important; }
+}
+@media (max-width: 480px) {
+  body { font-size: 14px !important; }
+  .logo img, .brand img { max-width: 140px !important; height: auto !important; }
+  button, .btn { width: 100% !important; padding: 10px 14px !important; }
+  .icon, .fa, .material-icons { font-size: 18px !important; line-height: 1 !important; }
+}
+/* End of responsive helpers */

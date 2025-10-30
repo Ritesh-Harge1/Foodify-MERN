@@ -1,0 +1,95 @@
+.explore-menu{
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.explore-menu h1{
+    color: #262626;
+    font-weight: 500;
+}
+
+.explore-menu-text{
+    max-width: 60%;
+    color: #808080;
+}
+
+.explore-menu-list{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    text-align: center;
+    margin: 20px 0px;
+    overflow: scroll;
+}
+
+.explore-menu-list::-webkit-scrollbar{
+    display: none;
+}
+
+.explore-menu-list-item img{
+    width: 7.5vw;
+    min-width: 80px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: 0.2s;
+}
+
+.explore-menu-list-item p{
+    margin-top: 10px;
+    color: #747474;
+    font-size: max(1.4vw,16px);
+    cursor: pointer;
+}
+
+.explore-menu hr{
+    margin: 10px 0px;
+    height: 2px;
+    background-color: #e2e2e2;
+    border: none;
+}
+
+.explore-menu-list-item .active{
+    border: 4px solid tomato;
+    padding: 2px;
+}
+
+@media (max-width:1050px){
+    .explore-menu-text{
+        max-width: 100%;
+        font-size: 14px;
+    }
+}
+.explore-menu-list-item img.active {
+  border: 3px solid #ff4d4f;
+  transform: scale(1.05);
+  transition: 0.3s ease;
+}
+
+
+
+/* ===== Responsive helpers appended by ChatGPT (per-file) - conservative, non-invasive ===== */
+@media (max-width: 1024px) {
+  img, video, canvas { max-width: 100% !important; height: auto !important; display: block !important; }
+  input, textarea, select, button { max-width: 100% !important; box-sizing: border-box !important; }
+  .container, .page, .main, .content, .app, .wrapper, .page-inner, .place-order-inner { width: 100% !important; max-width: 100% !important; padding-left: 12px !important; padding-right: 12px !important; box-sizing: border-box !important; }
+  .flex, .d-flex, .header-contents, .summary-items, .summary-item, .multi-fields, .fields, .order-form, .order-summary, .cart-items, .menu-list, .menu-grid { flex-wrap: wrap !important; }
+  .flex.col-on-mobile, .stack-mobile { flex-direction: column !important; }
+  .card, .panel, .summary-item, .menu-item, .product-card, .order-card { width: 100% !important; max-width: 100% !important; }
+}
+@media (max-width: 768px) {
+  h1, h2, h3, h4 { line-height: 1.15 !important; margin-top: .35em !important; margin-bottom: .35em !important; }
+  .nav, .navbar, .header, .topbar { padding-left: 10px !important; padding-right: 10px !important; }
+  .multi-fields input, .multi-fields select, .multi-fields textarea, .fields input, .fields select, .fields textarea { width: 100% !important; margin-bottom: 8px !important; }
+  .sidebar, .order-summary { width: 100% !important; max-width: 100% !important; order: 2 !important; }
+  .main-content, .content-area { order: 1 !important; width: 100% !important; }
+  .p-large, .m-large { padding: 12px !important; margin: 8px !important; }
+}
+@media (max-width: 480px) {
+  body { font-size: 14px !important; }
+  .logo img, .brand img { max-width: 140px !important; height: auto !important; }
+  button, .btn { width: 100% !important; padding: 10px 14px !important; }
+  .icon, .fa, .material-icons { font-size: 18px !important; line-height: 1 !important; }
+}
+/* End of responsive helpers */

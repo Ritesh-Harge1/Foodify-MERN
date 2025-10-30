@@ -1,0 +1,99 @@
+.login-popup{
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background-color: #00000090;
+    display: grid;
+}
+
+.login-popup-container{
+    place-self: center;
+    width: max(23vw,330px);
+    color: #808080;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 25px 30px;
+    border-radius: 8px;
+    font-size: 14px;
+    animation: fadeIn 0.5s;
+}
+
+.login-popup-title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: black;
+}
+
+.login-popup-title img{
+    width: 16px;
+    cursor: pointer;
+}
+
+.login-popup-inputs{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.login-popup-inputs input{
+    outline: none;
+    border: 1px solid #c9c9c9;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.login-popup-container button{
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    color: white;
+    background-color: tomato;
+    cursor: pointer;
+}
+
+.login-popup-condition{
+    display: flex;
+    align-items: start;
+    gap: 8px;
+    margin-top: -15px;
+}
+
+.login-popup-condition input{
+    margin-top: 5px;
+}
+
+.login-popup p span{
+    color: tomato;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+
+/* ===== Responsive helpers appended by ChatGPT (per-file) - conservative, non-invasive ===== */
+@media (max-width: 1024px) {
+  img, video, canvas { max-width: 100% !important; height: auto !important; display: block !important; }
+  input, textarea, select, button { max-width: 100% !important; box-sizing: border-box !important; }
+  .container, .page, .main, .content, .app, .wrapper, .page-inner, .place-order-inner { width: 100% !important; max-width: 100% !important; padding-left: 12px !important; padding-right: 12px !important; box-sizing: border-box !important; }
+  .flex, .d-flex, .header-contents, .summary-items, .summary-item, .multi-fields, .fields, .order-form, .order-summary, .cart-items, .menu-list, .menu-grid { flex-wrap: wrap !important; }
+  .flex.col-on-mobile, .stack-mobile { flex-direction: column !important; }
+  .card, .panel, .summary-item, .menu-item, .product-card, .order-card { width: 100% !important; max-width: 100% !important; }
+}
+@media (max-width: 768px) {
+  h1, h2, h3, h4 { line-height: 1.15 !important; margin-top: .35em !important; margin-bottom: .35em !important; }
+  .nav, .navbar, .header, .topbar { padding-left: 10px !important; padding-right: 10px !important; }
+  .multi-fields input, .multi-fields select, .multi-fields textarea, .fields input, .fields select, .fields textarea { width: 100% !important; margin-bottom: 8px !important; }
+  .sidebar, .order-summary { width: 100% !important; max-width: 100% !important; order: 2 !important; }
+  .main-content, .content-area { order: 1 !important; width: 100% !important; }
+  .p-large, .m-large { padding: 12px !important; margin: 8px !important; }
+}
+@media (max-width: 480px) {
+  body { font-size: 14px !important; }
+  .logo img, .brand img { max-width: 140px !important; height: auto !important; }
+  button, .btn { width: 100% !important; padding: 10px 14px !important; }
+  .icon, .fa, .material-icons { font-size: 18px !important; line-height: 1 !important; }
+}
+/* End of responsive helpers */

@@ -1,0 +1,191 @@
+/* ====== About Us Page ====== */
+.page-container.about-page {
+  width: 100%;
+  max-width: 1100px;
+  margin: 80px auto;
+  padding: 60px 40px;
+  background: linear-gradient(135deg, #fff8f6, #ffeae4); /* soft warm gradient */
+  border-radius: 16px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+  color: #333; /* readable dark gray text */
+  line-height: 1.8;
+  font-size: 1.1rem;
+  transition: all 0.3s ease-in-out;
+}
+
+/* ====== Main Title ====== */
+.about-page h1 {
+  text-align: center;
+  color: #ff4c24;
+  font-size: 2.7rem;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+/* ====== Subheadings ====== */
+.about-page h2 {
+  color: #222;
+  margin-top: 40px;
+  font-size: 1.7rem;
+  border-left: 5px solid #ff4c24;
+  padding-left: 12px;
+  text-transform: capitalize;
+}
+
+/* ====== Paragraph Text ====== */
+.about-page p {
+  color: #555;
+  margin-top: 12px;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+/* ====== Highlighted Text ====== */
+.about-page strong {
+  color: #ff4c24;
+  font-weight: 600;
+}
+
+/* ====== Section Wrapper ====== */
+.about-section {
+  margin-bottom: 30px;
+}
+
+/* ====== Lists ====== */
+.about-section ul {
+  margin-top: 12px;
+  padding-left: 25px;
+  color: #444;
+}
+
+.about-section li {
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.3s ease;
+}
+
+.about-section li::before {
+  content: "•";
+  color: #ff4c24;
+  font-size: 1.3rem;
+  margin-right: 8px;
+}
+
+.about-section li:hover {
+  color: #ff4c24;
+}
+
+/* ====== Thank You Section ====== */
+.about-thanks {
+  text-align: center;
+  margin-top: 50px;
+  font-weight: 600;
+  color: #ff4c24;
+  font-size: 1.3rem;
+  letter-spacing: 0.5px;
+}
+
+/* ====== Container Hover ====== */
+.page-container.about-page:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* ====== Responsive Design ====== */
+@media (max-width: 1024px) {
+  .page-container.about-page {
+    padding: 50px 25px;
+  }
+
+  .about-page h1 {
+    font-size: 2.4rem;
+  }
+
+  .about-page h2 {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-container.about-page {
+    padding: 35px 20px;
+    text-align: center;
+    background: linear-gradient(135deg, #fff5f1, #ffebe5);
+  }
+
+  .about-page h1 {
+    font-size: 2.1rem;
+  }
+
+  .about-page h2 {
+    font-size: 1.4rem;
+    border-left: none;
+    padding-left: 0;
+    border-bottom: 3px solid #ff4c24;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+
+  .about-section ul {
+    padding-left: 0;
+  }
+
+  .about-section li {
+    justify-content: center;
+  }
+
+  .about-thanks {
+    font-size: 1.15rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-container.about-page {
+    padding: 25px 15px;
+  }
+
+  .about-page h1 {
+    font-size: 1.8rem;
+  }
+
+  .about-page h2 {
+    font-size: 1.25rem;
+  }
+
+  .about-page p,
+  .about-section li {
+    font-size: 1rem;
+  }
+}
+
+
+
+/* ===== Responsive helpers appended by ChatGPT (per-file) - conservative, non-invasive ===== */
+@media (max-width: 1024px) {
+  img, video, canvas { max-width: 100% !important; height: auto !important; display: block !important; }
+  input, textarea, select, button { max-width: 100% !important; box-sizing: border-box !important; }
+  .container, .page, .main, .content, .app, .wrapper, .page-inner, .place-order-inner { width: 100% !important; max-width: 100% !important; padding-left: 12px !important; padding-right: 12px !important; box-sizing: border-box !important; }
+  .flex, .d-flex, .header-contents, .summary-items, .summary-item, .multi-fields, .fields, .order-form, .order-summary, .cart-items, .menu-list, .menu-grid { flex-wrap: wrap !important; }
+  .flex.col-on-mobile, .stack-mobile { flex-direction: column !important; }
+  .card, .panel, .summary-item, .menu-item, .product-card, .order-card { width: 100% !important; max-width: 100% !important; }
+}
+@media (max-width: 768px) {
+  h1, h2, h3, h4 { line-height: 1.15 !important; margin-top: .35em !important; margin-bottom: .35em !important; }
+  .nav, .navbar, .header, .topbar { padding-left: 10px !important; padding-right: 10px !important; }
+  .multi-fields input, .multi-fields select, .multi-fields textarea, .fields input, .fields select, .fields textarea { width: 100% !important; margin-bottom: 8px !important; }
+  .sidebar, .order-summary { width: 100% !important; max-width: 100% !important; order: 2 !important; }
+  .main-content, .content-area { order: 1 !important; width: 100% !important; }
+  .p-large, .m-large { padding: 12px !important; margin: 8px !important; }
+}
+@media (max-width: 480px) {
+  body { font-size: 14px !important; }
+  .logo img, .brand img { max-width: 140px !important; height: auto !important; }
+  button, .btn { width: 100% !important; padding: 10px 14px !important; }
+  .icon, .fa, .material-icons { font-size: 18px !important; line-height: 1 !important; }
+}
+/* End of responsive helpers */

@@ -1,0 +1,168 @@
+/* === Delivery Information Page Styling === */
+
+.page-container.delivery-page {
+  padding: 80px 10vw;
+  background: linear-gradient(135deg, #fffaf8, #fff3ef);
+  color: #333;
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Title Styling */
+.delivery-page h1 {
+  color: #ff4c24;
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+/* Paragraph Styling */
+.delivery-page p {
+  max-width: 850px;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* Divider Styling */
+.delivery-page hr {
+  width: 80%;
+  border: none;
+  height: 1px;
+  background-color: #ddd;
+  margin: 30px 0;
+}
+
+/* Section Titles */
+.delivery-page h2 {
+  color: #222;
+  font-size: 1.6rem;
+  margin-bottom: 12px;
+  text-transform: capitalize;
+}
+
+/* Section Wrapper */
+.delivery-section {
+  margin-bottom: 40px;
+  width: 100%;
+  max-width: 900px;
+}
+
+/* List Styling */
+.delivery-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 600px;
+  text-align: left;
+}
+
+.delivery-section li {
+  font-size: 1.05rem;
+  color: #444;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Highlighted Text */
+.delivery-page strong {
+  color: #ff4c24;
+}
+
+/* Links Styling */
+.delivery-page a {
+  color: #ff4c24;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.delivery-page a:hover {
+  text-decoration: underline;
+}
+
+/* Final Note */
+.delivery-note {
+  margin-top: 40px;
+  font-size: 1.2rem;
+  color: #ff4c24;
+  font-weight: 600;
+}
+
+/* Hover Subtle Effect */
+.delivery-section li:hover {
+  color: #ff4c24;
+  transition: color 0.3s ease;
+}
+
+/* === Responsive Design === */
+@media (max-width: 900px) {
+  .page-container.delivery-page {
+    padding: 60px 6vw;
+  }
+
+  .delivery-page h1 {
+    font-size: 1.9rem;
+  }
+
+  .delivery-page h2 {
+    font-size: 1.4rem;
+  }
+
+  .delivery-page p,
+  .delivery-section li {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .page-container.delivery-page {
+    padding: 50px 5vw;
+  }
+
+  .delivery-page h1 {
+    font-size: 1.7rem;
+  }
+
+  .delivery-page h2 {
+    font-size: 1.25rem;
+  }
+
+  .delivery-page p,
+  .delivery-section li {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+}
+
+
+
+/* ===== Responsive helpers appended by ChatGPT (per-file) - conservative, non-invasive ===== */
+@media (max-width: 1024px) {
+  img, video, canvas { max-width: 100% !important; height: auto !important; display: block !important; }
+  input, textarea, select, button { max-width: 100% !important; box-sizing: border-box !important; }
+  .container, .page, .main, .content, .app, .wrapper, .page-inner, .place-order-inner { width: 100% !important; max-width: 100% !important; padding-left: 12px !important; padding-right: 12px !important; box-sizing: border-box !important; }
+  .flex, .d-flex, .header-contents, .summary-items, .summary-item, .multi-fields, .fields, .order-form, .order-summary, .cart-items, .menu-list, .menu-grid { flex-wrap: wrap !important; }
+  .flex.col-on-mobile, .stack-mobile { flex-direction: column !important; }
+  .card, .panel, .summary-item, .menu-item, .product-card, .order-card { width: 100% !important; max-width: 100% !important; }
+}
+@media (max-width: 768px) {
+  h1, h2, h3, h4 { line-height: 1.15 !important; margin-top: .35em !important; margin-bottom: .35em !important; }
+  .nav, .navbar, .header, .topbar { padding-left: 10px !important; padding-right: 10px !important; }
+  .multi-fields input, .multi-fields select, .multi-fields textarea, .fields input, .fields select, .fields textarea { width: 100% !important; margin-bottom: 8px !important; }
+  .sidebar, .order-summary { width: 100% !important; max-width: 100% !important; order: 2 !important; }
+  .main-content, .content-area { order: 1 !important; width: 100% !important; }
+  .p-large, .m-large { padding: 12px !important; margin: 8px !important; }
+}
+@media (max-width: 480px) {
+  body { font-size: 14px !important; }
+  .logo img, .brand img { max-width: 140px !important; height: auto !important; }
+  button, .btn { width: 100% !important; padding: 10px 14px !important; }
+  .icon, .fa, .material-icons { font-size: 18px !important; line-height: 1 !important; }
+}
+/* End of responsive helpers */

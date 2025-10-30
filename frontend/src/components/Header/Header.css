@@ -1,0 +1,127 @@
+/* ✅ Main Header Section */
+.header {
+  height: 34vw;
+  margin: 30px auto;
+  background: url('/header_img.png') no-repeat center center;
+  background-size: cover;
+  position: relative;
+  border-radius: 16px; /* smooth edges */
+  overflow: hidden; /* keeps overlay inside */
+}
+
+/* ✅ Overlay for readability */
+.header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25); /* soft dark overlay */
+  z-index: 1;
+}
+
+/* ✅ Content Container */
+.header-contents {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 1.5vw;
+  max-width: 50%;
+  bottom: 10%;
+  left: 6vw;
+  animation: fadeIn 3s ease;
+  z-index: 2; /* ensures text appears above overlay */
+}
+
+/* ✅ Headline */
+.header-contents h2 {
+  font-weight: 500;
+  color: #ffffff;
+  font-size: max(4.5vw, 22px);
+}
+
+/* ✅ Description Text */
+.header-contents p {
+  color: #ffffff;
+  font-size: 1vw;
+  line-height: 1.5;
+  opacity: 0.95; /* slight transparency for readability */
+}
+
+/* ✅ CTA Button */
+.header-contents button {
+  border: none;
+  background-color: #ff4b2b;   /* bold orange-red */
+  color: #ffffff;              /* white text */
+  font-weight: 600;
+  padding: 1vw 2.3vw;
+  font-size: max(1vw, 13px);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* ✅ Hover effect for premium feel */
+.header-contents button:hover {
+  background-color: #e63a1f;   /* slightly darker red */
+  transform: scale(1.05);      /* small zoom animation */
+}
+
+/* ✅ Responsive Adjustments */
+@media (max-width: 1050px) {
+  .header-contents {
+    max-width: 45%;
+  }
+}
+
+@media (max-width: 750px) {
+  .header-contents {
+    max-width: 65%;
+  }
+
+  .header-contents p {
+    display: none; /* hides text for cleaner mobile UI */
+  }
+
+  .header-contents button {
+    padding: 2vw 4vw;
+  }
+}
+
+/* ✅ Optional Fade-In Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+/* ===== Responsive helpers appended by ChatGPT (per-file) - conservative, non-invasive ===== */
+@media (max-width: 1024px) {
+  img, video, canvas { max-width: 100% !important; height: auto !important; display: block !important; }
+  input, textarea, select, button { max-width: 100% !important; box-sizing: border-box !important; }
+  .container, .page, .main, .content, .app, .wrapper, .page-inner, .place-order-inner { width: 100% !important; max-width: 100% !important; padding-left: 12px !important; padding-right: 12px !important; box-sizing: border-box !important; }
+  .flex, .d-flex, .header-contents, .summary-items, .summary-item, .multi-fields, .fields, .order-form, .order-summary, .cart-items, .menu-list, .menu-grid { flex-wrap: wrap !important; }
+  .flex.col-on-mobile, .stack-mobile { flex-direction: column !important; }
+  .card, .panel, .summary-item, .menu-item, .product-card, .order-card { width: 100% !important; max-width: 100% !important; }
+}
+@media (max-width: 768px) {
+  h1, h2, h3, h4 { line-height: 1.15 !important; margin-top: .35em !important; margin-bottom: .35em !important; }
+  .nav, .navbar, .header, .topbar { padding-left: 10px !important; padding-right: 10px !important; }
+  .multi-fields input, .multi-fields select, .multi-fields textarea, .fields input, .fields select, .fields textarea { width: 100% !important; margin-bottom: 8px !important; }
+  .sidebar, .order-summary { width: 100% !important; max-width: 100% !important; order: 2 !important; }
+  .main-content, .content-area { order: 1 !important; width: 100% !important; }
+  .p-large, .m-large { padding: 12px !important; margin: 8px !important; }
+}
+@media (max-width: 480px) {
+  body { font-size: 14px !important; }
+  .logo img, .brand img { max-width: 140px !important; height: auto !important; }
+  button, .btn { width: 100% !important; padding: 10px 14px !important; }
+  .icon, .fa, .material-icons { font-size: 18px !important; line-height: 1 !important; }
+}
+/* End of responsive helpers */
