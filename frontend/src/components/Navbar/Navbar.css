@@ -3,98 +3,156 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #ffffff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  /* position: sticky;
-  top: 0;
-  z-index: 1000; */
+  background-color: #fff !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  position: relative;
+  z-index: 3000;
 }
 
-.navbar .logo {
+/* Logo */
+.logo {
   width: 120px;
-  object-fit: contain;
   border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  object-fit: contain;
   transition: transform 0.3s ease;
 }
+.logo:hover { transform: scale(1.05); }
 
-.logo:hover {
-  transform: scale(1.05);
-}
-
+/* Menu */
 .navbar-menu {
   display: flex;
   list-style: none;
   gap: 25px;
-  color: #49557e;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 500;
 }
-
-.navbar-menu a,
-.navbar-menu .active {
-  text-decoration: none;
+.navbar-menu a {
+  cursor: pointer;
   color: #49557e;
   position: relative;
-  cursor: pointer;
 }
-
 .navbar-menu a::after {
   content: "";
   position: absolute;
   left: 0;
   bottom: -5px;
-  width: 0%;
   height: 2px;
   background: #49557e;
+  width: 0;
   transition: width 0.3s ease;
 }
-
 .navbar-menu a:hover::after,
 .navbar-menu .active::after {
   width: 100%;
 }
 
+/* Right side */
 .navbar-right {
   display: flex;
   align-items: center;
   gap: 30px;
+  position: relative;
+  z-index: 3100;
 }
-
 .navbar-right img {
   width: 25px;
   cursor: pointer;
 }
 
-.navbar button {
-  background: transparent;
-  font-size: 16px;
-  color: #49557e;
-  border: 1px solid tomato;
-  padding: 10px 30px;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.navbar button:hover {
-  background-color: #fff4f2;
-}
-
-.navbar-search-icon {
-  position: relative;
-}
-
-.navbar-search-icon .dot {
+/* Search Box */
+.navbar-search-box {
   position: absolute;
-  min-width: 10px;
-  min-height: 10px;
-  background-color: tomato;
-  border-radius: 50%;
-  top: -8px;
-  right: -8px;
+  top: 55px;
+  right: 20px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px 14px 14px;
+  width: 320px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  z-index: 3450;
+  transition: all 0.3s ease-in-out;
 }
 
+/* Close button — top right */
+.navbar-close-search {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #666;
+  background: transparent;
+  border: none;
+  transition: color 0.2s ease;
+  z-index: 3460;
+}
+.navbar-close-search:hover { color: tomato; }
+
+/* Input */
+.navbar-search-box input {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  margin-top: 28px; /* space below close button */
+}
+.navbar-search-box input:focus { border-color: tomato; }
+
+/* Results */
+.navbar-search-results {
+  margin-top: 10px;
+  max-height: 240px;
+  overflow-y: auto;
+  border-top: 1px solid #eee;
+}
+/* .navbar-search-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.navbar-search-item:hover { background-color: #fff5f3; }
+.search-item-thumb {
+  width: 70px;
+  height: 45px;
+  object-fit: cover;
+  border-radius: 6px;
+} */
+
+.navbar-search-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px;
+  border-radius: 8px;
+  transition: 0.2s ease;
+  cursor: pointer;
+}
+
+.navbar-search-item:hover {
+  background-color: #fff5f3;
+  transform: translateY(-1px);
+}
+
+.search-item-thumb {
+  flex-shrink: 0;
+  width: 70px !important;    /* ✅ ensure fixed width */
+  height: 70px !important;   /* ✅ ensure square size */
+  min-width: 70px !important;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.search-item-name { font-weight: 500; }
+.search-item-meta { font-size: 13px; color: gray; }
+
+/* Profile dropdown */
 .navbar-profile {
   position: relative;
 }
@@ -132,120 +190,57 @@
   color: tomato;
 }
 
-/* 🌐 Responsive Design */
-@media (max-width: 1050px) {
-  .navbar-menu {
-    gap: 18px;
-    font-size: 16px;
-  }
-
-  .navbar-right {
-    gap: 25px;
-  }
-
-  .navbar-right img {
-    width: 22px;
-  }
-}
-
+/* Responsive */
 @media (max-width: 750px) {
-  .navbar-menu {
-    display: none;
-  }
-}
-
-
-
-/* ===== Responsive helpers appended by ChatGPT (per-file) - conservative, non-invasive ===== */
-@media (max-width: 1024px) {
-  img, video, canvas { max-width: 100% !important; height: auto !important; display: block !important; }
-  input, textarea, select, button { max-width: 100% !important; box-sizing: border-box !important; }
-  .container, .page, .main, .content, .app, .wrapper, .page-inner, .place-order-inner { width: 100% !important; max-width: 100% !important; padding-left: 12px !important; padding-right: 12px !important; box-sizing: border-box !important; }
-  .flex, .d-flex, .header-contents, .summary-items, .summary-item, .multi-fields, .fields, .order-form, .order-summary, .cart-items, .menu-list, .menu-grid { flex-wrap: wrap !important; }
-  .flex.col-on-mobile, .stack-mobile { flex-direction: column !important; }
-  .card, .panel, .summary-item, .menu-item, .product-card, .order-card { width: 100% !important; max-width: 100% !important; }
-}
-@media (max-width: 768px) {
-  h1, h2, h3, h4 { line-height: 1.15 !important; margin-top: .35em !important; margin-bottom: .35em !important; }
-  .nav, .navbar, .header, .topbar { padding-left: 10px !important; padding-right: 10px !important; }
-  .multi-fields input, .multi-fields select, .multi-fields textarea, .fields input, .fields select, .fields textarea { width: 100% !important; margin-bottom: 8px !important; }
-  .sidebar, .order-summary { width: 100% !important; max-width: 100% !important; order: 2 !important; }
-  .main-content, .content-area { order: 1 !important; width: 100% !important; }
-  .p-large, .m-large { padding: 12px !important; margin: 8px !important; }
+  .navbar-menu { display: none; }
+  .navbar-search-box { width: 240px; right: 60px; top: 50px; }
 }
 @media (max-width: 480px) {
-  body { font-size: 14px !important; }
-  .logo img, .brand img { max-width: 140px !important; height: auto !important; }
-  button, .btn { width: 100% !important; padding: 10px 14px !important; }
-  .icon, .fa, .material-icons { font-size: 18px !important; line-height: 1 !important; }
-}
-/* End of responsive helpers */
-
-/* 🔍 Search Feature Styles */
-.navbar-search-icon-img {
-  width: 22px;
-  cursor: pointer;
-  transition: transform 0.2s ease;
+  .navbar-search-box { width: 200px; top: 50px; right: 40px; }
+  .navbar-close-search { top: 4px; right: 6px; font-size: 18px; }
 }
 
-.navbar-search-icon-img:hover {
-  transform: scale(1.1);
+/* 🔴 Cart red dot indicator */
+/* 🛒 Cart icon wrapper */
+.navbar-cart-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Search box container */
-.navbar-search-box {
+/* 🔗 Link styling */
+.navbar-cart-link {
+  position: relative;
+  display: inline-block;
+}
+
+/* 🔴 Red dot indicator on cart */
+.cart-dot {
   position: absolute;
-  top: 70px;
-  right: 100px;
-  background: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
-  padding: 12px;
-  z-index: 200;
-  width: 260px;
+  top: -4px;
+  right: -6px;
+  width: 9px;
+  height: 9px;
+  background-color: tomato;
+  border-radius: 50%;
+  /* box-shadow: 0 0 4px rgba(255, 99, 71, 0.8); */
+  /* animation: pulseDot 1.2s infinite ease-in-out; */
 }
 
-.navbar-search-box input {
-  width: 100%;
-  padding: 8px 10px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  outline: none;
-  font-size: 14px;
-}
-
-/* Search results dropdown */
-.navbar-search-results {
-  margin-top: 10px;
-  max-height: 200px;
-  overflow-y: auto;
-}
-
-.navbar-search-item {
-  padding: 6px 8px;
-  cursor: pointer;
-  transition: background 0.2s ease;
-  border-radius: 6px;
-  font-size: 14px;
-}
-
-.navbar-search-item:hover {
-  background-color: #f7f7f7;
-  color: tomato;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .navbar-search-box {
-    right: 60px;
-    width: 200px;
+/* Optional soft pulse animation */
+/* @keyframes pulseDot {
+  0% {
+    transform: scale(1);
+    opacity: 1;
   }
-}
-
-@media (max-width: 480px) {
-  .navbar-search-box {
-    top: 60px;
-    right: 40px;
-    width: 170px;
+  50% {
+    transform: scale(1.3);
+    opacity: 0.6;
   }
-}
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+} */
+

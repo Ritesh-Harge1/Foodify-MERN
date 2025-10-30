@@ -16,6 +16,8 @@ import TrackOrder from "./pages/TrackOrder/TrackOrder.jsx"; // ✅ FIXED path
 import AboutUs from "./pages/AboutUs/AboutUs";
 import DeliveryInfo from "./pages/DeliveryInfo/DeliveryInfo";
 import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicy";
+// add this import near other page imports
+import SearchResults from "./pages/SearchResults/SearchResults";
 
 const App = () => {
   const [showLogin, setShowLogin] = useState(false);
@@ -46,6 +48,8 @@ const App = () => {
           <Route path="/about" element={<AboutUs />} />
           <Route path="/delivery" element={<DeliveryInfo />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/search" element={<SearchResults />} />
+
         </Routes>
       </div>
 
