@@ -385,7 +385,7 @@ const Navbar = ({ setShowLogin }) => {
 
         {/* 👤 Profile / Login */}
         {!token ? (
-          <button onClick={() => setShowLogin(true)}>sign in</button>
+          <button onClick={() => setShowLogin(true)}>Sign In</button>
         ) : (
           <div className='navbar-profile'>
             <img src={assets.profile_icon} alt="Profile" />

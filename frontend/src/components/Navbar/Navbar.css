@@ -1,12 +1,34 @@
+/* ================================
+   🌟 Navbar Base Layout
+================================ */
+.navbar,
+.navbar * {
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 500;
+  color: #49557e !important;
+  text-decoration: none;
+  font-style: normal;
+  mix-blend-mode: normal !important; /* prevent overlay blending */
+}
+
 .navbar {
   padding: 20px 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #fff !important;
+  background-color: #ffffff !important;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   position: relative;
   z-index: 3000;
+  isolation: isolate;
+}
+
+/* 🔴 Blur when login modal is open */
+.navbar.navbar-blur {
+  background-color: rgba(255, 99, 71, 0.4) !important;
+  backdrop-filter: blur(12px);
+  box-shadow: none;
+  transition: all 0.3s ease;
 }
 
 /* Logo */
@@ -15,10 +37,15 @@
   border-radius: 12px;
   object-fit: contain;
   transition: transform 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
-.logo:hover { transform: scale(1.05); }
+.logo:hover {
+  transform: scale(1.05);
+}
 
-/* Menu */
+/* ================================
+   📋 Navbar Menu
+================================ */
 .navbar-menu {
   display: flex;
   list-style: none;
@@ -46,7 +73,9 @@
   width: 100%;
 }
 
-/* Right side */
+/* ================================
+   🎯 Navbar Right Side
+================================ */
 .navbar-right {
   display: flex;
   align-items: center;
@@ -59,7 +88,9 @@
   cursor: pointer;
 }
 
-/* Search Box */
+/* ================================
+   🔍 Search Box
+================================ */
 .navbar-search-box {
   position: absolute;
   top: 55px;
@@ -72,8 +103,6 @@
   z-index: 3450;
   transition: all 0.3s ease-in-out;
 }
-
-/* Close button — top right */
 .navbar-close-search {
   position: absolute;
   top: 6px;
@@ -88,7 +117,6 @@
 }
 .navbar-close-search:hover { color: tomato; }
 
-/* Input */
 .navbar-search-box input {
   width: 100%;
   padding: 10px 14px;
@@ -96,34 +124,16 @@
   border: 1px solid #ddd;
   border-radius: 8px;
   outline: none;
-  margin-top: 28px; /* space below close button */
+  margin-top: 28px;
 }
 .navbar-search-box input:focus { border-color: tomato; }
 
-/* Results */
 .navbar-search-results {
   margin-top: 10px;
   max-height: 240px;
   overflow-y: auto;
   border-top: 1px solid #eee;
 }
-/* .navbar-search-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: 0.2s;
-}
-.navbar-search-item:hover { background-color: #fff5f3; }
-.search-item-thumb {
-  width: 70px;
-  height: 45px;
-  object-fit: cover;
-  border-radius: 6px;
-} */
-
 .navbar-search-item {
   display: flex;
   align-items: center;
@@ -133,37 +143,32 @@
   transition: 0.2s ease;
   cursor: pointer;
 }
-
 .navbar-search-item:hover {
   background-color: #fff5f3;
   transform: translateY(-1px);
 }
-
 .search-item-thumb {
   flex-shrink: 0;
-  width: 70px !important;    /* ✅ ensure fixed width */
-  height: 70px !important;   /* ✅ ensure square size */
+  width: 70px !important;
+  height: 70px !important;
   min-width: 70px !important;
   object-fit: cover;
   border-radius: 10px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
-
 .search-item-name { font-weight: 500; }
 .search-item-meta { font-size: 13px; color: gray; }
 
-/* Profile dropdown */
-.navbar-profile {
-  position: relative;
-}
-
+/* ================================
+   👤 Profile Dropdown
+================================ */
+.navbar-profile { position: relative; }
 .nav-profile-dropdown {
   position: absolute;
   display: none;
   right: 0;
   z-index: 10;
 }
-
 .navbar-profile:hover .nav-profile-dropdown {
   display: flex;
   flex-direction: column;
@@ -174,23 +179,74 @@
   border: 1px solid tomato;
   list-style: none;
 }
-
-.nav-profile-dropdown img {
-  width: 20px;
-}
-
+.nav-profile-dropdown img { width: 20px; }
 .nav-profile-dropdown li {
   display: flex;
   align-items: center;
   gap: 10px;
   cursor: pointer;
 }
+.nav-profile-dropdown li:hover { color: tomato; }
 
-.nav-profile-dropdown li:hover {
-  color: tomato;
+/* ================================
+   🛒 Cart Indicator
+================================ */
+.navbar-cart-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.navbar-cart-link {
+  position: relative;
+  display: inline-block;
+}
+.cart-dot {
+  position: absolute;
+  top: -4px;
+  right: -6px;
+  width: 9px;
+  height: 9px;
+  background-color: tomato;
+  border-radius: 50%;
 }
 
-/* Responsive */
+/* ================================
+   🔘 Sign In Button (Tomato)
+================================ */
+.navbar-right button {
+  background-color: tomato;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 18px;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: capitalize;
+}
+.navbar-right button:hover {
+  background-color: #ff6347;
+  transform: translateY(-2px);
+}
+.navbar-right button:active {
+  transform: scale(0.96);
+}
+
+/* ================================
+   🧱 Layering Fix
+================================ */
+.header, .header-contents { z-index: 1 !important; }
+.navbar, .navbar-profile, .navbar-profile-dropdown {
+  z-index: 5000 !important;
+  mix-blend-mode: normal !important;
+}
+.login-popup { z-index: 6000 !important; }
+
+/* ================================
+   📱 Responsive
+================================ */
 @media (max-width: 750px) {
   .navbar-menu { display: none; }
   .navbar-search-box { width: 240px; right: 60px; top: 50px; }
@@ -200,47 +256,4 @@
   .navbar-close-search { top: 4px; right: 6px; font-size: 18px; }
 }
 
-/* 🔴 Cart red dot indicator */
-/* 🛒 Cart icon wrapper */
-.navbar-cart-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* 🔗 Link styling */
-.navbar-cart-link {
-  position: relative;
-  display: inline-block;
-}
-
-/* 🔴 Red dot indicator on cart */
-.cart-dot {
-  position: absolute;
-  top: -4px;
-  right: -6px;
-  width: 9px;
-  height: 9px;
-  background-color: tomato;
-  border-radius: 50%;
-  /* box-shadow: 0 0 4px rgba(255, 99, 71, 0.8); */
-  /* animation: pulseDot 1.2s infinite ease-in-out; */
-}
-
-/* Optional soft pulse animation */
-/* @keyframes pulseDot {
-  0% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.3);
-    opacity: 0.6;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-} */
 

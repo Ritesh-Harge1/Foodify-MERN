@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "prebuild": "if [ \"$OS\" = \"Windows_NT\" ]; then echo 'Skipping chmod on Windows'; else chmod +x ./node_modules/.bin/vite || true; fi",
+    "prebuild": "node -e \"console.log('Skipping chmod step (cross-platform build)')\""
+,
     "build": "npm run prebuild && vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
