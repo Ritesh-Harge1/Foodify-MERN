@@ -3,6 +3,7 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
+  assetsInclude: ["**/*.webp"], // ✅ ensures .webp is treated as an asset
   server: {
     port: 5173,
     proxy: {

@@ -2,7 +2,7 @@
 .header {
   height: 34vw;
   margin: 30px auto;
-  background: url('/header_img.png') no-repeat center center;
+  background: url('/header_img.webP') no-repeat center center;
   background-size: cover;
   position: relative;
   border-radius: 16px; /* smooth edges */
