@@ -7,6 +7,19 @@ const Cart = () => {
   const { cartItems, food_list, removeFromCart, getTotalCartAmount } = useContext(StoreContext);
   const navigate = useNavigate();
 
+  // 🟢 Function to handle checkout click
+  const handleProceedToCheckout = () => {
+    const token = localStorage.getItem("token"); // check if user is logged in
+
+    if (!token) {
+      alert("To place an order, you need to login first!");
+      navigate("/login"); // optional: redirect to login page
+      return;
+    }
+
+    navigate("/order");
+  };
+
   return (
     <div className="cart">
       <div className="cart-items">
@@ -60,7 +73,9 @@ const Cart = () => {
               <b>₹{getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 40}</b>
             </div>
           </div>
-          <button onClick={() => navigate('/order')}>PROCEED TO CHECKOUT</button>
+
+          {/* 🟢 Updated button */}
+          <button onClick={handleProceedToCheckout}>PROCEED TO CHECKOUT</button>
         </div>
 
         <div className="cart-promocode">
