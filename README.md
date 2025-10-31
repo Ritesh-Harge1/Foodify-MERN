@@ -91,7 +91,7 @@ An integrated **Admin Panel** enables restaurant owners to easily manage menus, 
 🏠 Home Page<img width="1918" height="930" alt="Screenshot 2025-10-31 135005" src="https://github.com/user-attachments/assets/a6ea62a8-7056-414c-9679-d2440e783e2b" />
 
 
-🍽️ Menu Section<img width="1915" height="930" alt="Screenshot 2025-10-31 135247" src="https://github.com/user-attachments/assets/45ae22d6-fc53-478b-956d-621f394302ab" />
+🍽️ Menu Section((This screenshot is taken at 80% zoom level for better visibility.)<img width="1919" height="929" alt="Screenshot 2025-10-31 142556" src="https://github.com/user-attachments/assets/877920f4-714b-4393-a8cc-eab6b9d21814" />
 
 
 🛒 Cart Page<img width="1919" height="932" alt="Screenshot 2025-10-31 135731" src="https://github.com/user-attachments/assets/24a6d0d9-df9c-46bc-b5d3-be92eeb1f059" />
