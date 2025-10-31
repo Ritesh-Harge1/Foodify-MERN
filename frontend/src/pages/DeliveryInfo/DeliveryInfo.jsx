@@ -54,7 +54,7 @@ const DeliveryInfo = () => {
         <p>
           Have any delivery issues or delays? Our support team is here to help!  
           You can reach us at <a href="mailto:support@foodify.com">support@foodify.com</a>&nbsp;  
-          or call us at &nbsp; <strong>+91-9876543210</strong>.
+          or call us at &nbsp;<strong>+91-9876543210</strong>.
         </p>
       </section>
 
