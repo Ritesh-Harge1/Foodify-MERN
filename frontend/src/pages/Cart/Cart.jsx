@@ -12,7 +12,7 @@ const Cart = () => {
     const token = localStorage.getItem("token"); // check if user is logged in
 
     if (!token) {
-      alert("To place an order, you need to login first!");
+      alert("To place an order, you need to sign in first!");
       navigate("/login"); // optional: redirect to login page
       return;
     }
