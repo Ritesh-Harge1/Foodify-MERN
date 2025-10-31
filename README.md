@@ -84,6 +84,36 @@ An integrated **Admin Panel** enables restaurant owners to easily manage menus, 
 | **Deployment**     | Vercel (Frontend & Admin), Render (Backend) |
 
 ---
+🖼️ Screenshots
+
+👨‍🍳 User Side
+
+🏠 Home Page<img width="1918" height="930" alt="Screenshot 2025-10-31 135005" src="https://github.com/user-attachments/assets/a6ea62a8-7056-414c-9679-d2440e783e2b" />
+
+
+🍽️ Menu Section<img width="1915" height="930" alt="Screenshot 2025-10-31 135247" src="https://github.com/user-attachments/assets/45ae22d6-fc53-478b-956d-621f394302ab" />
+
+
+🛒 Cart Page<img width="1919" height="932" alt="Screenshot 2025-10-31 135731" src="https://github.com/user-attachments/assets/24a6d0d9-df9c-46bc-b5d3-be92eeb1f059" />
+
+
+📦 Place Order Page<img width="1915" height="930" alt="Screenshot 2025-10-31 135753" src="https://github.com/user-attachments/assets/2f4a45a3-7ddf-4745-9542-1f3af9181afe" />
+
+
+💳 Payment (Stripe Checkout)<img width="1919" height="926" alt="Screenshot 2025-10-31 135828" src="https://github.com/user-attachments/assets/26ea6dc5-0f03-4d36-b1e9-eac4014f82d5" />
+
+🛠️ Admin Side
+
+➕ Add Menu Item<img width="1914" height="930" alt="Screenshot 2025-10-31 140632" src="https://github.com/user-attachments/assets/332a96c3-e042-4884-866d-81d42227b315" />
+
+
+
+📋 List Menu Items<img width="1919" height="928" alt="Screenshot 2025-10-31 141557" src="https://github.com/user-attachments/assets/00cca5bc-2127-43b2-bc6a-aaf8e511bdfc" />
+
+
+🚚 Track Orders<img width="1912" height="926" alt="Screenshot 2025-10-31 140650" src="https://github.com/user-attachments/assets/54eefadc-5ea2-4bf1-acc3-a468177902ca" />
+
+
 
 ### 💡 Future Enhancements
 
