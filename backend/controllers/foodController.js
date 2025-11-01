@@ -1,105 +1,121 @@
+// backend/controllers/foodController.js
 import foodModel from "../models/foodModel.js";
-import userModel from "../models/userModel.js";
-import fs from "fs";
+import cloudinary from "cloudinary";
+import streamifier from "streamifier";
+import dotenv from "dotenv";
+dotenv.config();
 
-// ✅ Add Food Item
-const addFood = async (req, res) => {
-  try {
-    // Ensure image exists
-    if (!req.file) {
-      return res.status(400).json({ success: false, message: "Image upload failed!" });
-    }
-
-    const image_filename = `${req.file.filename}`;
-    const { name, description, price, category } = req.body;
-
-    // ✅ Validate required fields
-    if (!name || !description || !price || !category) {
-      return res.status(400).json({ success: false, message: "All fields are required!" });
-    }
-
-    // ✅ Get user from token (set in authMiddleware)
-    const userId = req.user?.id;
-    if (!userId) {
-      return res.status(401).json({ success: false, message: "Not authorized" });
-    }
-
-    const userData = await userModel.findById(userId);
-    if (!userData || userData.role !== "admin") {
-      return res.status(403).json({ success: false, message: "You are not admin" });
-    }
-
-    // ✅ Create new food item
-    // compute random rating between 2.5 and 5.0, rounded to 1 decimal
-const randomRating = Number((Math.random() * (5 - 2.5) + 2.5).toFixed(1));
-
-const newFood = new foodModel({
-  name,
-  description,
-  price,
-  category,
-  image: image_filename,
-  rating: randomRating,
+// Configure Cloudinary
+cloudinary.v2.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key:    process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
+// helper: upload buffer to Cloudinary
+function uploadBufferToCloudinary(buffer, folder = "foodify/foods") {
+  return new Promise((resolve, reject) => {
+    const stream = cloudinary.v2.uploader.upload_stream(
+      { folder, resource_type: "image" },
+      (error, result) => {
+        if (error) return reject(error);
+        resolve(result);
+      }
+    );
+    streamifier.createReadStream(buffer).pipe(stream);
+  });
+}
+
+// Helper to generate a random rating (4 or 5)
+function generateRandomRating() {
+  return Math.floor(Math.random() * 2) + 4; // 4 or 5
+}
+
+// Add Food Item (expects multipart/form-data with 'image' and other fields)
+const addFood = async (req, res) => {
+  try {
+    const { name, description, price, category } = req.body;
+
+    // Basic validation
+    if (!name || !description || !price || !category) {
+      return res.status(400).json({ success: false, message: "All fields are required." });
+    }
+
+    // Upload buffer to Cloudinary if provided
+    let imageUrl = "";
+    let public_id = "";
+    if (req.file && req.file.buffer) {
+      const uploadResult = await uploadBufferToCloudinary(req.file.buffer, "foodify/foods");
+      imageUrl = uploadResult.secure_url;
+      public_id = uploadResult.public_id;
+    }
+
+    // Add random rating (persisted)
+    const rating = generateRandomRating();
+
+    // Create new food document
+    const newFood = new foodModel({
+      name,
+      description,
+      price: Number(price),
+      image: imageUrl,      // blank string if none
+      public_id,           // optional for deletion later
+      category,
+      rating,
+    });
 
     await newFood.save();
 
-    // ✅ Always send a response!
-    return res.status(200).json({
-      success: true,
-      message: "Food item added successfully!",
-      data: newFood,
-    });
-  } catch (error) {
-    console.error("Error in addFood:", error);
-    return res.status(500).json({
-      success: false,
-      message: "Server error while adding food.",
-    });
+    // return the created object
+    return res.status(201).json({ success: true, message: "Food added", food: newFood });
+  } catch (err) {
+    console.error("Error in addFood:", err);
+    return res.status(500).json({ success: false, message: "Server error adding food", error: err.message });
   }
 };
 
-// ✅ List All Foods
+// List Food
 const listFood = async (req, res) => {
   try {
-    const foods = await foodModel.find({});
-    // Append full URL for each food item
-    const updatedFoods = foods.map(food => ({
-      ...food._doc,
-      image: `${process.env.BACKEND_URL || "http://localhost:4000"}/uploads/${food.image}`
+    const foods = await foodModel.find({}).lean(); // .lean() returns plain objects
+    // If some old records lack rating, ensure they get a rating here (one-time)
+    const foodsWithRating = foods.map(f => ({
+      ...f,
+      rating: typeof f.rating === "number" ? f.rating : generateRandomRating()
     }));
-    return res.json({ success: true, data: updatedFoods });
-  } catch (error) {
-    console.error("Error in listFood:", error);
-    return res.json({ success: false, message: "Error fetching foods." });
+    return res.json({ success: true, data: foodsWithRating });
+  } catch (err) {
+    console.error("Error in listFood:", err);
+    return res.status(500).json({ success: false, message: "Server error fetching foods" });
   }
 };
 
-// ✅ Remove Food
+// Remove Food
 const removeFood = async (req, res) => {
   try {
-    const userData = await userModel.findById(req.body.userId);
-    if (!userData || userData.role !== "admin") {
-      return res.status(403).json({ success: false, message: "You are not admin" });
+    const { id } = req.body;
+    if (!id) {
+      return res.status(400).json({ success: false, message: "Missing food id." });
     }
-
-    const food = await foodModel.findById(req.body.id);
+    const food = await foodModel.findById(id);
     if (!food) {
-      return res.status(404).json({ success: false, message: "Food not found" });
+      return res.status(404).json({ success: false, message: "Food not found." });
     }
 
-    // Delete image file safely
-    fs.unlink(`uploads/${food.image}`, (err) => {
-      if (err) console.log("Image delete error:", err);
-    });
+    // Optional: delete Cloudinary asset if public_id present
+    if (food.public_id) {
+      try {
+        await cloudinary.v2.uploader.destroy(food.public_id);
+      } catch (e) {
+        console.warn("Cloudinary delete warning:", e.message || e);
+      }
+    }
 
-    await foodModel.findByIdAndDelete(req.body.id);
-
+    await foodModel.findByIdAndDelete(id);
     return res.json({ success: true, message: "Food removed successfully!" });
   } catch (error) {
     console.error("Error in removeFood:", error);
-    return res.json({ success: false, message: "Server error removing food." });
+    return res.status(500).json({ success: false, message: "Server error removing food." });
   }
 };
 

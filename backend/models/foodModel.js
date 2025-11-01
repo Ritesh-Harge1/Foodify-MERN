@@ -1,16 +1,18 @@
-// mern-food-delivery-app/backend/models/foodModel.js
+// backend/models/foodModel.js
 import mongoose from "mongoose";
 
 const foodSchema = new mongoose.Schema({
-    name: { type: String, required: true },
-    description: { type: String, required: true },
-    price: { type: Number, required: true },
-    image: { type: String, required: true },
-    category: { type: String, required: true },
-    // New: rating stored as Number (e.g. 4.5)
-    rating: { type: Number, required: true }
+  name: { type: String, required: true },
+  description: { type: String, required: true },
+  price: { type: Number, required: true },
+  category: { type: String, required: true },
+  image: { type: String, required: true },
+  public_id: { type: String },
+  // ✅ Add rating
+  rating: {
+    type: Number,
+    default: () => Math.floor(Math.random() * 2) + 4, // random 4 or 5
+  },
 });
 
-const foodModel = mongoose.models.food || mongoose.model("food", foodSchema);
-
-export default foodModel;
+export default mongoose.model("food", foodSchema);

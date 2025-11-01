@@ -1,52 +1,22 @@
+// backend/routes/foodRoute.js
 import express from "express";
 import { addFood, listFood, removeFood } from "../controllers/foodController.js";
 import multer from "multer";
 import authMiddleware from "../middleware/auth.js";
-import path from "path";
 
-const foodRouter = express.Router();
+const router = express.Router();
 
-// ===== Image Storage Engine =====
-const storage = multer.diskStorage({
-  destination: "uploads",
-  filename: (req, file, cb) => {
-    // ✅ Sanitize filename to prevent CORB / broken image paths
-    const ext = path.extname(file.originalname).toLowerCase(); // get file extension
-    const base = path
-      .basename(file.originalname, ext)
-      .replace(/\s+/g, "_")      // replace spaces with underscores
-      .replace(/[()]/g, "")      // remove parentheses
-      .replace(/[^a-zA-Z0-9_-]/g, "") // remove unsafe characters
-      .toLowerCase();
+// Use multer memory storage so file buffer is available in req.file.buffer
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
 
-    cb(null, `${Date.now()}-${base}${ext}`);
-  },
-});
+// Add food (admin only) - expects form-data with 'image' file
+router.post("/add", authMiddleware, upload.single("image"), addFood);
 
-// ✅ Multer upload middleware
-const upload = multer({
-  storage,
-  limits: { fileSize: 5 * 1024 * 1024 }, // limit 5MB
-  fileFilter: (req, file, cb) => {
-    const allowedTypes = ["image/jpeg", "image/png", "image/webp", "image/jpg"];
-    if (!allowedTypes.includes(file.mimetype)) {
-      const error = new Error("Only image files (jpg, png, webp) are allowed!");
-      error.status = 400;
-      return cb(error);
-    }
-    cb(null, true);
-  },
-});
+// Get all foods (public)
+router.get("/list", listFood);
 
-// ===== Routes =====
+// Remove food (admin only)
+router.post("/remove", authMiddleware, removeFood);
 
-// ✅ Add food (admin only)
-foodRouter.post("/add", authMiddleware, upload.single("image"), addFood);
-
-// ✅ Get all foods (public)
-foodRouter.get("/list", listFood);
-
-// ✅ Remove food (admin only)
-foodRouter.post("/remove", authMiddleware, removeFood);
-
-export default foodRouter;
+export default router;
