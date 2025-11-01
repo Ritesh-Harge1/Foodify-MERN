@@ -10,7 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Login from "./components/Login/Login";
 
 const App = () => {
-   const url = 'https://foodify-mern-backend.onrender.com';
+   const url = import.meta.env.VITE_BACKEND_URL || "http://localhost:4000";
   return (
     <div>
       <ToastContainer />
