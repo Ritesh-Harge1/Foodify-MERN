@@ -8,11 +8,11 @@ const foodSchema = new mongoose.Schema({
   category: { type: String, required: true },
   image: { type: String, required: true },
   public_id: { type: String },
-  // ✅ Add rating
+  // ✅ Random rating between 2.5 and 5.0
   rating: {
     type: Number,
-    default: () => Math.floor(Math.random() * 2) + 4, // random 4 or 5
-  },
+    default: () => parseFloat((Math.random() * (5 - 2.5) + 2.5).toFixed(1))
+  }
 });
 
 export default mongoose.model("food", foodSchema);
