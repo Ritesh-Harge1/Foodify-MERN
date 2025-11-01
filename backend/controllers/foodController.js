@@ -28,7 +28,7 @@ function uploadBufferToCloudinary(buffer, folder = "foodify/foods") {
 
 // Helper to generate a random rating (4 or 5)
 function generateRandomRating() {
-  return Math.floor(Math.random() * 2) + 4; // 4 or 5
+  return parseFloat((Math.random() * (5 - 2.5) + 2.5).toFixed(1));
 }
 
 // Add Food Item (expects multipart/form-data with 'image' and other fields)
